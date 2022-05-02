@@ -89,3 +89,31 @@ async function flipAgain() {
     devToolsMenu();
   }
 }
+
+// DECIMAL-TO-BINARY CONVERTER TOOL
+async function runDecimalToBinaryConverter() {
+  console.clear();
+  const answers = await inquirer.prompt({
+    name: "enteredDecimal",
+    type: "number",
+    message: "Enter a decimal to convert to binary:",
+  });
+
+  let decimalAsBinary = answers.enteredDecimal.toString(2);
+  console.log(chalk.rgb(119, 221, 119).bold(decimalAsBinary));
+  enterAnotherDecimal();
+}
+
+async function enterAnotherDecimal() {
+  const answers = await inquirer.prompt({
+    name: "anotherDecimal",
+    type: "confirm",
+    message: "Enter another decimal:",
+  });
+
+  if (answers.anotherDecimal) {
+    runDecimalToBinaryConverter();
+  } else {
+    devToolsMenu();
+  }
+}

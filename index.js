@@ -3,6 +3,7 @@
 import chalk from "chalk";
 import inquirer from "inquirer";
 import figlet from "figlet";
+import { createSpinner } from "nanospinner";
 
 // DEVTOOLS MENU
 async function devToolsMenu() {
@@ -130,27 +131,30 @@ async function runCountdownTimer() {
 // DIGITAL CLOCK TOOL
 function runDigitalClock() {
   console.clear();
-  console.log('Loading...')
+  const spinner = createSpinner("Loading...").start();
   setInterval(() => {
+    spinner.stop();
     let d = new Date();
     let hour = d.getHours();
     let minute = d.getMinutes();
     let second = d.getSeconds();
-    let abbr = 'AM'
+    let abbr = "AM";
 
-    if(hour > 12) {
-      abbr = 'PM'
+    if (hour > 12) {
+      abbr = "PM";
     }
 
     if (minute < 10) {
       minute = `0${minute}`;
     }
 
-    if(second < 10) {
-      second = `0${second}`
+    if (second < 10) {
+      second = `0${second}`;
     }
 
     console.clear();
-    console.log(chalk.rgb(255, 255, 255).bold(`${hour}:${minute}:${second} ${abbr}`));
+    console.log(
+      chalk.rgb(255, 255, 255).bold(`${hour}:${minute}:${second} ${abbr}`)
+    );
   }, 1000);
 }

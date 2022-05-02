@@ -12,7 +12,6 @@ async function devToolsMenu() {
     message: "WELCOME TO DEVTOOLS!  SELECT A TOOL TO USE:",
     choices: [
       "Random Color Generator",
-      "Coin Flipper",
       "Decimal-to-Binary Converter",
       "Countdown Timer",
     ],
@@ -22,9 +21,6 @@ async function devToolsMenu() {
   switch (chosenOption) {
     case "Random Color Generator":
       runRandomColorGenerator();
-      break;
-    case "Coin Flipper":
-      runCoinFlipper();
       break;
     case "Decimal-to-Binary Converter":
       runDecimalToBinaryConverter();
@@ -62,29 +58,6 @@ async function generateAnotherRandomColor() {
 
   if (answers.anotherColor) {
     runRandomColorGenerator();
-  } else {
-    devToolsMenu();
-  }
-}
-
-// COIN FLIPPER TOOL
-function runCoinFlipper() {
-  console.clear();
-  let coin = ["HEADS", "TAILS"];
-  let randomFlip = coin[Math.floor(Math.random() * 2)];
-  console.log(randomFlip);
-  flipAgain();
-}
-
-async function flipAgain() {
-  const answers = await inquirer.prompt({
-    name: "anotherFlip",
-    type: "confirm",
-    message: "Flip again?",
-  });
-
-  if (answers.anotherFlip) {
-    runCoinFlipper();
   } else {
     devToolsMenu();
   }

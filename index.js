@@ -35,3 +35,34 @@ async function devToolsMenu() {
   }
 }
 await devToolsMenu();
+
+// RANDOM COLOR GENERATOR TOOL
+function runRandomColorGenerator() {
+  console.clear();
+  let rgbCodes = [];
+  let randomColorCode;
+  for (let i = 0; i < 3; i++) {
+    randomColorCode = Math.floor(Math.random() * 256);
+    rgbCodes.push(randomColorCode);
+  }
+  console.log(
+    chalk
+      .rgb(rgbCodes[0], rgbCodes[1], rgbCodes[2])
+      .bold(`${rgbCodes[0]}, ${rgbCodes[1]}, ${rgbCodes[2]}`)
+  );
+  generateAnotherRandomColor();
+}
+
+async function generateAnotherRandomColor() {
+  const answers = await inquirer.prompt({
+    name: "anotherColor",
+    type: "confirm",
+    message: "Generate another random color?",
+  });
+
+  if (answers.anotherColor) {
+    runRandomColorGenerator();
+  } else {
+    devToolsMenu();
+  }
+}

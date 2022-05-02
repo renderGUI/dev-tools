@@ -14,7 +14,7 @@ async function devToolsMenu() {
       "Random Color Generator",
       "Coin Flipper",
       "Decimal-to-Binary Converter",
-      "Git Commands Reference Sheet",
+      "Countdown Timer",
     ],
   });
 
@@ -29,8 +29,8 @@ async function devToolsMenu() {
     case "Decimal-to-Binary Converter":
       runDecimalToBinaryConverter();
       break;
-    case "Git Commands Reference Sheet":
-      runGitCommands();
+    case "Countdown Timer":
+      runCountdownTimer();
       break;
   }
 }
@@ -116,4 +116,30 @@ async function enterAnotherDecimal() {
   } else {
     devToolsMenu();
   }
+}
+
+// COUNTDOWN TIMER TOOL
+async function runCountdownTimer() {
+  console.clear();
+  const answers = await inquirer.prompt({
+    name: "timerDuration",
+    type: "number",
+    message: "Set a countdown timer for how many seconds?"
+  })
+
+  let seconds = answers.timerDuration;
+  console.clear();
+  console.log(seconds);
+
+  let timer = setInterval(() => {
+    console.clear();
+    seconds--;
+    console.log(seconds);
+
+    if(seconds == 0) {
+      console.clear();
+      clearInterval(timer);
+      console.log(chalk.redBright.bold('TIME!'));
+    }
+  }, 1000)
 }

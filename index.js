@@ -16,11 +16,11 @@ figlet("DEVTOOLS", function (err, data) {
 
   const loadingMenuScreen = chalkAnimation.karaoke(data);
   loadingMenuScreen.start();
-  
+
   setTimeout(() => {
-      loadingMenuScreen.stop();
-      devToolsMenu();
-  }, 1800)
+    loadingMenuScreen.stop();
+    devToolsMenu();
+  }, 1800);
 });
 
 // DEVTOOLS MENU
@@ -121,6 +121,12 @@ async function runCountdownTimer() {
     name: "timerDuration",
     type: "number",
     message: "Set a countdown timer for how many seconds?",
+    validate: (answer) => {
+        if(isNaN(answer)) {
+            return `Invalid number.  Press ${chalk.rgb(255, 255, 255).bold('control + K')} and try again.`
+        }
+        return true;
+    }
   });
 
   let seconds = answers.timerDuration;
@@ -175,5 +181,3 @@ function runDigitalClock() {
     );
   }, 1000);
 }
-
-// console.log(gradient("#78b0de", "77dd77", "#ffffff")(data));

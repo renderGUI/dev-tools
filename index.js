@@ -108,7 +108,7 @@ async function enterAnotherDecimal() {
   const answers = await inquirer.prompt({
     name: "anotherDecimal",
     type: "confirm",
-    message: "Enter another decimal:",
+    message: "Enter another decimal?",
   });
 
   if (answers.anotherDecimal) {

@@ -4,11 +4,16 @@
   "description": "CLI-based application with various development and productivity tools",
   "main": "index.js",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/renderGUI/dev-tools.git"
+  },
   "scripts": {
     "start": "node index.js"
   },
-  "author": "Ismael Huerta",
+  "author": "renderGUI",
   "license": "MIT",
+  "bin": "./index.js",
   "dependencies": {
     "chalk": "^5.0.1",
     "chalk-animation": "^2.0.2",

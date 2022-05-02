@@ -4,7 +4,6 @@ import chalk from "chalk";
 import inquirer from "inquirer";
 import figlet from "figlet";
 import { createSpinner } from "nanospinner";
-import gradient from "gradient-string";
 import chalkAnimation from "chalk-animation";
 
 // DEVTOOLS LOADING MENU SCREEN

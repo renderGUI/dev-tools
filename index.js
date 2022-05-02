@@ -2,6 +2,7 @@
 
 import chalk from "chalk";
 import inquirer from "inquirer";
+import figlet from "figlet";
 
 // DEVTOOLS MENU
 async function devToolsMenu() {
@@ -112,7 +113,12 @@ async function runCountdownTimer() {
     if(seconds == 0) {
       console.clear();
       clearInterval(timer);
-      console.log(chalk.redBright.bold('TIME!'));
+      figlet('TIME!', function(err, data) {
+        if(err) {
+          console.log("Could not load 'TIME!' ASCII art...")
+        }
+        console.log(chalk.redBright.bold(data));
+      })
     }
   }, 1000)
 }

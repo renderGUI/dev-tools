@@ -66,3 +66,26 @@ async function generateAnotherRandomColor() {
     devToolsMenu();
   }
 }
+
+// COIN FLIPPER TOOL
+function runCoinFlipper() {
+  console.clear();
+  let coin = ["HEADS", "TAILS"];
+  let randomFlip = coin[Math.floor(Math.random() * 2)];
+  console.log(randomFlip);
+  flipAgain();
+}
+
+async function flipAgain() {
+  const answers = await inquirer.prompt({
+    name: "anotherFlip",
+    type: "confirm",
+    message: "Flip again?",
+  });
+
+  if (answers.anotherFlip) {
+    runCoinFlipper();
+  } else {
+    devToolsMenu();
+  }
+}

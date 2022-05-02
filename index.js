@@ -93,6 +93,14 @@ async function runDecimalToBinaryConverter() {
     name: "enteredDecimal",
     type: "number",
     message: "Enter a decimal to convert to binary:",
+    validate: (answer) => {
+      if (isNaN(answer)) {
+        return `Invalid number.  Press ${chalk
+          .rgb(255, 255, 255)
+          .bold("control + K")} and try again.`;
+      }
+      return true;
+    },
   });
 
   let decimalAsBinary = answers.enteredDecimal.toString(2);
@@ -122,11 +130,13 @@ async function runCountdownTimer() {
     type: "number",
     message: "Set a countdown timer for how many seconds?",
     validate: (answer) => {
-        if(isNaN(answer)) {
-            return `Invalid number.  Press ${chalk.rgb(255, 255, 255).bold('control + K')} and try again.`
-        }
-        return true;
-    }
+      if (isNaN(answer)) {
+        return `Invalid number.  Press ${chalk
+          .rgb(255, 255, 255)
+          .bold("control + K")} and try again.`;
+      }
+      return true;
+    },
   });
 
   let seconds = answers.timerDuration;

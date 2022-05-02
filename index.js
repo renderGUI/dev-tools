@@ -4,6 +4,24 @@ import chalk from "chalk";
 import inquirer from "inquirer";
 import figlet from "figlet";
 import { createSpinner } from "nanospinner";
+import gradient from "gradient-string";
+import chalkAnimation from "chalk-animation";
+
+// DEVTOOLS LOADING MENU SCREEN
+figlet("DEVTOOLS", function (err, data) {
+  console.clear();
+  if (err) {
+    console.log("Could not load 'DEVTOOLS' ASCII art...");
+  }
+
+  const loadingMenuScreen = chalkAnimation.karaoke(data);
+  loadingMenuScreen.start();
+  
+  setTimeout(() => {
+      loadingMenuScreen.stop();
+      devToolsMenu();
+  }, 1800)
+});
 
 // DEVTOOLS MENU
 async function devToolsMenu() {
@@ -36,7 +54,6 @@ async function devToolsMenu() {
       break;
   }
 }
-await devToolsMenu();
 
 // RANDOM COLOR GENERATOR TOOL
 function runRandomColorGenerator() {
@@ -158,3 +175,5 @@ function runDigitalClock() {
     );
   }, 1000);
 }
+
+// console.log(gradient("#78b0de", "77dd77", "#ffffff")(data));

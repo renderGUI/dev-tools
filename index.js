@@ -14,13 +14,13 @@ figlet("DEVTOOLS", function (err, data) {
     console.log("Could not load 'DEVTOOLS' ASCII art...");
   }
 
-  const loadingMenuScreen = chalkAnimation.karaoke(data);
+  const loadingMenuScreen = chalkAnimation.rainbow(data);
   loadingMenuScreen.start();
 
   setTimeout(() => {
     loadingMenuScreen.stop();
     devToolsMenu();
-  }, 1800);
+  }, 2000);
 });
 
 // DEVTOOLS MENU

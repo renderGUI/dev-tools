@@ -15,6 +15,7 @@ async function devToolsMenu() {
       "Random Color Generator",
       "Decimal-to-Binary Converter",
       "Countdown Timer",
+      "Digital Clock",
     ],
   });
 
@@ -28,6 +29,9 @@ async function devToolsMenu() {
       break;
     case "Countdown Timer":
       runCountdownTimer();
+      break;
+    case "Digital Clock":
+      runDigitalClock();
       break;
   }
 }
@@ -47,10 +51,10 @@ function runRandomColorGenerator() {
       .rgb(rgbCodes[0], rgbCodes[1], rgbCodes[2])
       .bold(`${rgbCodes[0]}, ${rgbCodes[1]}, ${rgbCodes[2]}`)
   );
-  generateAnotherRandomColor();
+  anotherColorQuestion();
 }
 
-async function generateAnotherRandomColor() {
+async function anotherColorQuestion() {
   const answers = await inquirer.prompt({
     name: "anotherColor",
     type: "confirm",
@@ -75,10 +79,10 @@ async function runDecimalToBinaryConverter() {
 
   let decimalAsBinary = answers.enteredDecimal.toString(2);
   console.log(chalk.rgb(119, 221, 119).bold(decimalAsBinary));
-  enterAnotherDecimal();
+  anotherDecimalQuestion();
 }
 
-async function enterAnotherDecimal() {
+async function anotherDecimalQuestion() {
   const answers = await inquirer.prompt({
     name: "anotherDecimal",
     type: "confirm",
@@ -98,8 +102,8 @@ async function runCountdownTimer() {
   const answers = await inquirer.prompt({
     name: "timerDuration",
     type: "number",
-    message: "Set a countdown timer for how many seconds?"
-  })
+    message: "Set a countdown timer for how many seconds?",
+  });
 
   let seconds = answers.timerDuration;
   console.clear();
@@ -110,15 +114,43 @@ async function runCountdownTimer() {
     seconds--;
     console.log(seconds);
 
-    if(seconds == 0) {
+    if (seconds == 0) {
       console.clear();
       clearInterval(timer);
-      figlet('TIME!', function(err, data) {
-        if(err) {
-          console.log("Could not load 'TIME!' ASCII art...")
+      figlet("TIME!", function (err, data) {
+        if (err) {
+          console.log("Could not load 'TIME!' ASCII art...");
         }
         console.log(chalk.redBright.bold(data));
-      })
+      });
     }
-  }, 1000)
+  }, 1000);
+}
+
+// DIGITAL CLOCK TOOL
+function runDigitalClock() {
+  console.clear();
+  console.log('Loading...')
+  setInterval(() => {
+    let d = new Date();
+    let hour = d.getHours();
+    let minute = d.getMinutes();
+    let second = d.getSeconds();
+    let abbr = 'AM'
+
+    if(hour > 12) {
+      abbr = 'PM'
+    }
+
+    if (minute < 10) {
+      minute = `0${minute}`;
+    }
+
+    if(second < 10) {
+      second = `0${second}`
+    }
+
+    console.clear();
+    console.log(chalk.rgb(255, 255, 255).bold(`${hour}:${minute}:${second} ${abbr}`));
+  }, 1000);
 }

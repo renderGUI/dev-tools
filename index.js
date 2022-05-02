@@ -173,7 +173,7 @@ function runDigitalClock() {
     let second = d.getSeconds();
     let abbr = "AM";
 
-    if (hour > 12) {
+    if (hour >= 12) {
       abbr = "PM";
     }
 

@@ -9,11 +9,13 @@
     "url": "https://github.com/renderGUI/dev-tools.git"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node devtools.js"
   },
   "author": "renderGUI",
   "license": "MIT",
-  "bin": "./index.js",
+  "bin": {
+    "devtools": "./devtools.js"
+  },
   "dependencies": {
     "chalk": "^5.0.1",
     "chalk-animation": "^2.0.2",

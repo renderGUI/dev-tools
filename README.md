@@ -1,6 +1,6 @@
 <p align="center">
 <img src="images/dt-logo.png" alt="logo for devtools application" height="140"/>
-<h1 align="center"><b>DevTools<b></h1>
+<h1 align="center"><b>DevTools</b></h1>
 <p align="center">CLI-based application with various development and productivity tools</p>
 </p>
 

@@ -50,7 +50,12 @@ $ npm start
 
 ## Usage
 
-- **NAVIGATING TOOLS** - To navigate through the tools, use the Up/Down arrow keys.  Select a tool by hitting the Return key (Enter on Windows).
+- **RUNNING DEVTOOLS GLOBALLY** - By default, DevTools will only run in the project directory.  In order to execute DevTools from anywhere in the terminal emulator, type this into the command line:
+```sh
+$ sudo npm link
+```
+...this will ask for your password since it's a root user command.  Now, DevTools can be executed from anywhere in the terminal emulator by using the `devtools` command.
+- **CHOOSING A TOOL** - To navigate through the tools, use the Up/Down arrow keys.  Select a tool by hitting the Return key (Enter on Windows).
 - **STOPPING THE APPLICATION** - You can stop the application at any time by hitting Ctrl + C.
 
 ## Version History

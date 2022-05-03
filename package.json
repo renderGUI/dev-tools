@@ -1,5 +1,5 @@
 {
-  "name": "dev-tools",
+  "name": "dev-tools-cli",
   "version": "1.0.0",
   "description": "CLI-based application with various development and productivity tools",
   "main": "index.js",
